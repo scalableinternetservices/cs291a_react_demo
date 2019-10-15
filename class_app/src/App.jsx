@@ -1,21 +1,29 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { lhs: "", rhs: "" };
+    this.state = {
+      lhs: "",
+      rhs: "",
+      status: 'Enter two numbers and press "Calculate" to get the sum.'
+    };
   }
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  onSubmit = event => {
+    event.preventDefault();
+    this.setState({ status: `Result: ${this.state.lhs + this.state.rhs}` });
+  };
+
   render() {
     return (
       <>
-        <form>
+        <form onSubmit={this.onSubmit}>
           <input
             name="lhs"
             type="text"
@@ -32,7 +40,7 @@ class App extends React.Component {
           <br />
           <input type="submit" value="Calculate" />
         </form>
-        <div>Enter two numbers and press "Calculate" to get the sum.</div>
+        <div>{this.state.status}</div>
       </>
     );
   }
