@@ -17,6 +17,7 @@ class Calculator extends React.Component {
   onSubmit = event => {
     event.preventDefault();
     this.setState({ status: `Result: ${this.state.lhs + this.state.rhs}` });
+    this.props.updateCounter();
   };
 
   render() {
