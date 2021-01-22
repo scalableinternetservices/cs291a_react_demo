@@ -1,7 +1,6 @@
 import React from 'react';
-import './App.css';
 
-class App extends React.Component {
+class Calculator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,14 +20,14 @@ class App extends React.Component {
 
   render() {
     return (
-    <div className="App">
+    <>
       <input name="left" onChange={this.updateInput} value={this.state.left} />
       <input name="right" onChange={this.updateInput} value={this.state.right} />
       <input type="submit" onClick={this.calculate} value="Calculate!" />
       <div>{this.state.status}</div>
-    </div>
+    </>
   );
   }
 }
 
-export default App;
+export default Calculator;
