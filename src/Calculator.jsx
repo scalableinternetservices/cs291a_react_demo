@@ -12,6 +12,7 @@ class Calculator extends React.Component {
 
   calculate = () => {
     this.setState((prevState, _props) => ({status: prevState.left + prevState.right}));
+    this.props.callback();
   }
 
   updateInput = event => {
