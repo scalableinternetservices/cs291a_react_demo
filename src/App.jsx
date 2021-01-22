@@ -6,11 +6,16 @@ class App extends React.Component {
     super(props);
     this.state = {
       left: "",
-      right: ""
+      right: "",
+      status: "Input values and click on 'Calculate!'"
     }
   }
 
-  updateInput = (event) => {
+  calculate = () => {
+    this.setState((prevState, _props) => ({status: prevState.left + prevState.right}));
+  }
+
+  updateInput = event => {
     this.setState({[event.target.name]: event.target.value});
   }
 
@@ -19,7 +24,8 @@ class App extends React.Component {
     <div className="App">
       <input name="left" onChange={this.updateInput} value={this.state.left} />
       <input name="right" onChange={this.updateInput} value={this.state.right} />
-      <input type="submit" value="Calculate!" />
+      <input type="submit" onClick={this.calculate} value="Calculate!" />
+      <div>{this.state.status}</div>
     </div>
   );
   }
